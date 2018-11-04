@@ -16,6 +16,13 @@
         isLogin: false
       }
     },
+    created: function() {
+      firebase.auth().onAuthStateChanged(user => {
+        console.log(user);
+        this.isLogin = !!user;
+      });
+    }
+    ,
     components: {
       Home: Home,
       Editor: Editor
