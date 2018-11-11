@@ -2,6 +2,18 @@
 
 > A Vue.js project
 
+## Preinstall
+```bash
+# vue操作用クライアント
+npm install -g vue-cli
+
+# 確認
+vue -h
+
+# firebase操作用クライアント
+npm install -g firebase-tools
+```
+
 ## Build Setup
 
 ``` bash
