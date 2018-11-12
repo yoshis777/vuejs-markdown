@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <h1><img alt="MyMarkdown" src="./assets/title-logo.png"></h1>
     <Home v-if="!isLogin"></Home>
     <Editor v-if="isLogin" :user="userData"></Editor>
   </div>

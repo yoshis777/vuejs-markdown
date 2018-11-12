@@ -1,6 +1,5 @@
 <template>
   <div id="home">
-    <h1>{{msg}}</h1>
     <button @click="googleLogin">Googleアカウントでログイン</button>
   </div>
 </template>
@@ -8,9 +7,7 @@
   export default {
     name: "home",
     data() {
-      return {
-        msg: "Welcome to MyMarkdown"
-      }
+      return {}
     },
     methods: {
       googleLogin: function() {
