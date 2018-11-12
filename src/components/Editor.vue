@@ -11,7 +11,8 @@
           <p class="memoTitle">{{ displayTitle(memo.markdown) }}</p>
         </div>
         <button class="addMemoBtn" @click="addMemo">メモの追加</button>
-        <button class="deleteMemoBtn" @click="deleteMemo" v-if="memos.length > 1">選択中のメモを追加</button>
+        <button class="deleteMemoBtn" @click="deleteMemo" v-if="memos.length > 1">選択中のメモを削除</button>
+        <button class="saveMemosBtn" @click="saveMemos">メモの保存</button>
       </div>
       <textarea class="markdown" v-model="memos[selectedIndex].markdown" title=""></textarea>
       <div class="preview" v-html="preview()"></div>
@@ -34,6 +35,17 @@
         selectedIndex: 0
       };
     },
+    created: function() {
+      firebase
+        .database()
+        .ref("memos/" + this.user.uid)
+        .once("value")
+        .then(result => {
+          if(result.val()){//DBに情報がある場合のみmemosにセットする
+            this.memos = result.val();
+          }
+        })
+    },
     methods: {
       logout: function() {
         firebase.auth().signOut();
@@ -48,6 +60,12 @@
         if(this.selectedIndex > 0){
           this.selectedIndex--;
         }
+      },
+      saveMemos: function() {
+        firebase
+          .database()
+          .ref("memos/" + this.user.uid)
+          .set(this.memos)
       },
       selectMemo: function(index) {
         this.selectedIndex = index;
@@ -90,6 +108,9 @@
   }
   .addMemoBtn {
     margin-top: 20px;
+  }
+  .deleteMemoBtn {
+    margin: 10px;
   }
   .markdown {
     width: 40%;
