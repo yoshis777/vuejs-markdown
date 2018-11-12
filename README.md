@@ -27,4 +27,10 @@ npm run dev
 npm run build
 ```
 
+## Other Events
+* firebase
+  * firebase-toolsによるセットアップ
+  * ユーザログイン：googleアカウントによる認証設定
+  * セキュリティルールの設定
+
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
